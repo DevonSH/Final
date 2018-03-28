@@ -20,6 +20,7 @@
   -ms-transition-duration: .2s;
   -webkit-transition-duration: .2s;
   transition-duration: .2s;
+  display: inline-block;
 }
 #cloud{
 	height: auto;
@@ -201,7 +202,11 @@ function generateCloud(data)
    for(var i = 0; i < theWords.length; i = i + 1){
      // code here  --- us the wordCount object to generate a word cloud of words that occur more than once.
      if(wordCount[theWords[i]] >1){ //check if the word occurs more than once.
-       output = output + '<span style = "font-size: ' + + (wordCount[theWords[i]* 5] + 'px:"> ' + theWords[i] + '</span>';
+       if(wordCount[theWords[i]] >6){
+       output = output + '<span style = "font-size: ' + (wordCount[theWords[i]]) + 'px;"> ' + theWords[i] + '</span>';
+     }else {
+       output = output + '<span style = "font-size: ' + (wordCount[theWords[i]] * 5) + 'px;"> ' + theWords[i] + '</span>';
+     }
      }
    }
 
