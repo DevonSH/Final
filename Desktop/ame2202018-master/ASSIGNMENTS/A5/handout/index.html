@@ -98,9 +98,13 @@
 <script>
   var offset = 0;
   function displayTime(){
-    var h = new Date().getHours();
-    var m = new Date().getMinutes()
-    var s = new Date().getSeconds()
+    var userOffset = parseFloat(document.getElementById("DropDownTimezone").value) * 60 * 60 * 1000;
+    var timeOffset = new Date().getTimezoneOffset() * 60000;
+    var currTime = new Date().getTime() + userOffset + timeOffset;
+    var currTimeDO = new Date(currTime);
+    var h = currTimeDO.getHours();
+    var m = currTimeDO.getMinutes()
+    var s = currTimeDO.getSeconds()
 
     var ha = h * (360/12) + (m*.5);
     var ma = m * (360/60)
@@ -123,8 +127,7 @@
   }
   function offsetChanged(){
 
-    var n = d.getTimezoneOffset();
-    document.getElementById("DropDownTimezone").innerHTML = n;
+
 
   }
 </script>
